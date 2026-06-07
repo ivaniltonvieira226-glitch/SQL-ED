@@ -1,0 +1,262 @@
+/* ==============================================================================
+   1. CONFIGURAÇÕES GERAIS E PALETA DE CORES
+   ============================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=WDXL+Lubrifont+TC&display=swap');
+
+:root {
+    --bg-main: #02031A;         /* Fundo profundo */
+    --bg-card: #021B2B;         /* Fundo de blocos/cards */
+    --bg-input: #042A41;        /* Fundo de campos de texto */
+    --text-primary: #EBDFCC;    /* Texto off-white confortável */
+    --color-accent: #B10C43;    /* Destaque / Botão principal */
+    --color-hover: #FF0841;     /* Destaque brilhante no hover */
+    --border-color: #042A41;    /* Linhas divisórias discretas */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-main);
+    font-family: "WDXL Lubrifont TC", sans-serif;
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* ==============================================================================
+   2. HEADER & LAYOUT MAIN
+   ============================================================================== */
+header {
+    background-color: var(--bg-card);
+    padding: 2.5rem 1rem;
+    text-align: center;
+    border-bottom: 2px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+header h1 {
+    font-size: 2.8rem;
+    color: var(--text-primary);
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    color: #8fa0ad;
+    font-size: 1.1rem;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* ==============================================================================
+   3. PAINEL DE BOTÕES (MENU)
+   ============================================================================== */
+#buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+#buttons button {
+    font: inherit;
+    font-size: 0.95rem;
+    padding: 0.9rem 1rem;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.25s ease-in-out;
+}
+
+#buttons button:hover {
+    background-color: var(--color-accent);
+    border-color: var(--color-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(177, 12, 67, 0.3);
+}
+
+#buttons button:active {
+    transform: translateY(0);
+}
+
+/* Reduz o impacto do botão de limpar biblioteca */
+#buttons button[data-action="clear"] {
+    border-color: #551024;
+}
+#buttons button[data-action="clear"]:hover {
+    background-color: #551024;
+}
+
+/* ==============================================================================
+   4. FORMULÁRIOS DINÂMICOS
+   ============================================================================== */
+#forms {
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 0 auto 2rem auto;
+    max-width: 500px; /* Evita que o formulário estique na tela toda */
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+#forms h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+#forms form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#forms input,
+#forms select {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font: inherit;
+    background-color: var(--bg-input);
+    color: var(--text-primary);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+#forms input:focus,
+#forms select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 8px rgba(177, 12, 67, 0.4);
+    background-color: #063654;
+}
+
+#forms button[type="submit"] {
+    background-color: var(--color-accent);
+    color: white;
+    font-weight: bold;
+    border: none;
+    font: inherit;
+    border-radius: 6px;
+    padding: 0.9rem;
+    margin-top: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+#forms button[type="submit"]:hover {
+    background-color: var(--color-hover);
+}
+
+#forms button[type="submit"]:active {
+    transform: scale(0.98);
+}
+
+/* ==============================================================================
+   5. CONTAINER DE SAÍDA E DESIGN DOS CARDS DE LIVROS
+   ============================================================================== */
+#output {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+/* O Estilo do Card individual do livro que o JS injeta */
+#output > div {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, border-color 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#output > div:hover {
+    transform: translateY(-4px);
+    border-color: #064469;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+#output h3 {
+    font-size: 1.3rem;
+    color: #fff;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+}
+
+#output p {
+    font-size: 0.95rem;
+    color: #b0c4de;
+    margin-bottom: 0.4rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Remove a linha feia de <hr> antiga já que agora usamos a borda do Card */
+#output hr {
+    display: none;
+}
+
+/* Central de Ordenação e Filtro por Ano (Ajuste visual no agrupamento) */
+#anoFormGroup button {
+    font: inherit;
+    background-color: var(--bg-input);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 0.7rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#anoFormGroup button:hover {
+    background-color: var(--color-accent);
+    border-color: var(--color-hover);
+}
+
+#anoFormGroup #btnFiltrar {
+    background-color: #053b5c;
+    font-weight: bold;
+}
+
+/* ==============================================================================
+   6. ACESSIBILIDADE E COMPORTAMENTOS ESPECIAIS
+   ============================================================================== */
+#buttons button:disabled {
+    background-color: #1a2730;
+    color: #556875;
+    border-color: #1a2730;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Ajuste fino para os inputs de busca por linha se necessário */
+.filter-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.filter-row input {
+    flex: 1;
+}

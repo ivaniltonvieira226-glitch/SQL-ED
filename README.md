@@ -2,12 +2,11 @@
 # PLANEJAMENTO 
 meu-projeto-engenharia-dados/
 │
-├── parte1-relacional/
-│   ├── conexao_postgres.py         
-│   ├── crud_operacoes.py
-│   └── README.md (com os prints/logs do banco Postgres)
-│
-├── parte2-nosql/
-│   ├── conexao_mongodb.py
-│   ├── validacoes_e_crud.py
-│   └── README.md (com os prints/logs do banco MongoDB e explicação do mapeamento)
+├── Biblioteca Online(Tabela livro e leitura)/
+   ├── conexao.py         
+   ├── lib.py
+   └── exibir
+
+
+Funções: mostrar livros(V), filtrar livros por ano de lançamento(v), ordenar livros (DESC ou CRESC)(V), adicionar livro(V), bucar livro(V), remover livro(V), ordenar por titulo(V),
+atualizar status do livro.

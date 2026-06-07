@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Nbook</title>
+    
+</head>
+<body>
+    <header>
+        <h1>Biblioteca de Livros</h1>
+        <p>Melhor biblioteca de livros</p>
+    </header>
+    <main>
+        <div id="buttons">
+            <button data-action="listarLivros">Listar livros</button>
+            <button data-action="adicionarLivros">Adicionar livro</button>
+            <button data-action="atualizarLeitura">Atualizar Leitura</button>
+            <button data-action="removerLivro">Remover livro</button>
+            <button data-action="clear">Limpar Biblioteca</button>
+            <button data-action="FiltrarAno">Agrupar livros</button>
+            <button data-action="buscaLivros">Buscar livros</button>
+            <button data-action="BuscarId">Consultar id</button>   
+        </div>
+        <div id="forms"></div>
+        <div id="output"></div>
+        <script type="module" src="UI.js"></script>
+    </main>
