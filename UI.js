@@ -229,6 +229,34 @@ function mostrarFormularioAno() {
 }
 
 // ===============================================
+// Buscar Livro
+// ===============================================
+async function buscarLivros() {
+    forms.innerHTML = `<h3>Buscar Livros</h3>
+    <form id = "strlivroForms">
+        <input id="nomeLivro", placeholder="titulo" required>
+        <button type="submit" id="btnbuscar">Buscar Livro</button>
+    </form>    
+    `
+    document.getElementById("strlivroForms").addEventListener("submit", async (e) =>{
+        e.preventDefault(); // isso impede a pagina de recarregar
+        const titulo = document.getElementById("nomeLivro").value.trim();
+        if(titulo === ""){
+            alert("Por favor, digite alguma coisa.");
+            return;
+        }
+        try{
+            const resposta = await fetch(`${API}/livros/titulo/${titulo}`);
+            const dados = await resposta.json();
+            renderizarLista(dados);
+        }
+        catch (erro){
+            output.innerHTML = "<p style='color: red;>Erro ao Buscar o livro</p>"; 
+        }
+    });
+}
+
+// ===============================================
 // Actions e Event Listener Principal
 // ===============================================
 
@@ -239,8 +267,9 @@ const actions = {
     atualizarLeitura: mostrarFormularioAtualizar,
     removerLivro: mostrarFormularioRemover,
     FiltrarAno: mostrarFormularioAno,
+    buscaLivros: buscarLivros,
     clear: () => { output.innerHTML = ""; forms.innerHTML = ""; }
-};
+}
 
 buttons.addEventListener("click", (event) => {
     if (event.target.tagName === 'BUTTON') {
